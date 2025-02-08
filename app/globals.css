@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --neon-text-color: #f81ce5;
+  --neon-border-color: #08f;
+  --matrix-green: #00ff00;
+  --dark-green: #003300;
+}
+
+body {
+  background: #000;
+  color: var(--matrix-green);
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 0 5px var(--matrix-green);
+}
+
+.glitch-text {
+  position: relative;
+  text-shadow: 
+    0.05em 0 0 var(--matrix-green),
+    -0.05em -0.025em 0 var(--matrix-green),
+    -0.025em 0.05em 0 var(--matrix-green);
+  animation: glitch 500ms infinite;
+}
+
+@keyframes glitch {
+  0% { text-shadow: 0.05em 0 0 var(--matrix-green), -0.05em -0.025em 0 var(--matrix-green) }
+  25% { text-shadow: -0.05em -0.025em 0 var(--matrix-green), 0.025em 0.025em 0 var(--matrix-green) }
+  50% { text-shadow: 0.025em 0.05em 0 var(--matrix-green), -0.05em -0.05em 0 var(--matrix-green) }
+  75% { text-shadow: -0.025em -0.025em 0 var(--matrix-green), -0.025em -0.05em 0 var(--matrix-green) }
+  100% { text-shadow: -0.025em 0 0 var(--matrix-green), 0.025em -0.025em 0 var(--matrix-green) }
+}
+
+.neon-border {
+  box-shadow: 
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 15px var(--neon-border-color),
+    0 0 20px var(--neon-border-color);
+}
+
+/* Add scanline effect */
+.scanline {
+  position: relative;
+}
+
+.scanline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 50%,
+    rgba(0, 255, 0, 0.1) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+} 
